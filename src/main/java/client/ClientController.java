@@ -60,10 +60,10 @@ public class ClientController implements Initializable {
                     if (am instanceof FileListMessage) {
                         refreshServerFile(((FileListMessage)am).getFiles());
                     }
-                    if (am instanceof CommandMessage ) {
-                        CommandMessage cm=(CommandMessage)am;
-
-                    }
+//                    if (am instanceof CommandMessage ) {
+//                        CommandMessage cm=(CommandMessage)am;
+//
+//                    }
                 }
             } catch (ClassNotFoundException | IOException e) {
                 e.printStackTrace();

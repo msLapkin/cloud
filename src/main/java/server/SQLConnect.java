@@ -5,17 +5,12 @@ import java.sql.*;
 public class SQLConnect {
     private static Connection connection;
     private static Statement statement;
-    //private static Logger logger = LoggerFactory.getLogger(SQLConnect.class);
 
     SQLConnect(){
         try {
             createDB();
-
             createUser();
-
             connect();
-            checkAutorisation("LoginTest","111");
-            checkAutorisation("1LoginTest","222");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -27,13 +22,11 @@ public class SQLConnect {
     private static void createUser() {
         try {
             statement.executeUpdate("INSERT INTO Users (User,Pass) VALUES ('qwe','qwe');");
-
             System.out.println("user qwe exists");
             statement.executeUpdate("INSERT INTO Users (User,Pass) VALUES ('111','111');");
             System.out.println("user 111 exists");
             statement.executeUpdate("INSERT INTO Users (User,Pass) VALUES ('222','222');");
             System.out.println("user 222 exists");
-            //logger.info("Tests user create in BD");
 
         } catch (SQLException e) {
             //e.printStackTrace();
@@ -47,11 +40,9 @@ public class SQLConnect {
                     "ID   INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, " +
                     "User STRING  UNIQUE NOT NULL, Pass STRING  NOT NULL);");
             System.out.println("DB exists");
-            //logger.info("BD create successful");
 
         } catch (SQLException e) {
             e.printStackTrace();
-            //logger.error("Cannot create BD");
         }
     }
 
@@ -63,14 +54,11 @@ public class SQLConnect {
             ps.setString(2,pass);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                //logger.info("User: "+Color.ANSI_BLUE.getColor()+login+Color.ANSI_RESET.getColor()+" authorized");
                 return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            //logger.error(e.getSQLState());
         }
-        //logger.error("User "+login+" cannot authorized");
         return false;
     }
 

@@ -25,7 +25,7 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
                     authOK = true;
                     //ctx.writeAndFlush(new CommandMessage(CommandMessage.AUTH_OK));
                     cPath = path + cLogin;
-                    System.out.println("aaaaaaa");
+                  //  System.out.println("aaaaaaa");
                     AbstractMessage.checkDir(cPath);
                     ctx.writeAndFlush(new FileListMessage(FileListMessage.getFileList(cPath)));
                     ctx.fireChannelRead(msg);

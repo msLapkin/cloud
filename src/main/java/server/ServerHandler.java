@@ -34,7 +34,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 }
             }
             if (msg instanceof FileMessage) {
-                System.out.println("команда 1");
+               // System.out.println("команда 1");
                 FileMessage fm = (FileMessage) msg;
                 Files.write(Paths.get(cPath + fm.getFilename()), fm.getData(), StandardOpenOption.CREATE);
                 ctx.writeAndFlush(new FileListMessage(FileListMessage.getFileList(cPath)));
