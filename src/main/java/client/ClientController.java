@@ -80,6 +80,9 @@ public class ClientController implements Initializable {
                     @Override
                     public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                         tfFileName.setText(newValue);
+                        dld.setDisable(true);
+                        login.setDisable(true);
+                        uld.setDisable(false);
                     }
                 }
         );
@@ -88,6 +91,9 @@ public class ClientController implements Initializable {
                     @Override
                     public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                         tfFileName.setText(newValue);
+                        dld.setDisable(false);
+                        login.setDisable(true);
+                        uld.setDisable(true);
                     }
                 }
         );
@@ -102,7 +108,6 @@ public class ClientController implements Initializable {
 
     public void pressOnLoginBtn(ActionEvent actionEvent){
         Network.sendMsg(new AuthMessage(loginField.getText(),passField.getText()));
-        login.disableProperty();
         return;
     }
 
